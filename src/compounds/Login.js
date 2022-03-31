@@ -32,12 +32,12 @@ export default function Login({saveToken,saveUserImg}){
             alert(`Digite corretamente suas Credenciais`)    
         );
     }
-
+    //TODO: adicionar nos inputs  disabled="disabled" ou disabled="" com disabled sendo um estado q vai mudando de acordo com o login
     return(
         <Container>
             <Logo src={logo} alt="logo-trackit"></Logo>
-            <Input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}></Input>
-            <Input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)}></Input>
+            <Input type="text" placeholder="email" required value={email} onChange={(e) => setEmail(e.target.value)}></Input>
+            <Input type="password" placeholder="senha" required value={password} onChange={(e) => setPassword(e.target.value)}></Input>
             <Button onClick={loginAutentication}>Entrar</Button>
             <Link to="/cadastro"> <LinkToNewUser>Não tem uma conta? Cadastre-se!</LinkToNewUser> </Link>
         </Container>
@@ -89,10 +89,11 @@ const Button = styled.button`
     line-height: 26px;
     text-align: center;
     color: #FFFFFF;
+    margin-bottom: 25px;
 `;
 
 const LinkToNewUser = styled.p`
-    margin-top: 25px;
+
     font-family: 'Lexend Deca';
     font-style: normal;
     font-weight: 400;

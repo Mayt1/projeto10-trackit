@@ -31,7 +31,7 @@ export default function CreateUser(){
             alert(`Digite corretamente suas Credenciais`)    
         );
     }
-
+    //TODO: adicionar nos inputs  disabled="disabled" ou disabled="" com "disabled" sendo um estado q vai mudando de acordo com o login
     return(
         <Container>
             <Logo src={logo} alt="logo-trackit"></Logo>
@@ -90,10 +90,10 @@ const Button = styled.button`
     line-height: 26px;
     text-align: center;
     color: #FFFFFF;
+    margin-bottom: 25px;
 `;
 
 const LinkToNewUser = styled.p`
-    margin-top: 25px;
     font-family: 'Lexend Deca';
     font-style: normal;
     font-weight: 400;

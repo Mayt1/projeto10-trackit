@@ -12,7 +12,7 @@ export default function CreateUser(){
     const [name, setName] = useState("");
     const [image, setImage] = useState("");
 
-    const navigate= useNavigate();
+    const navigate = useNavigate();
 
     function createNewAccount(){
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
@@ -26,7 +26,10 @@ export default function CreateUser(){
             const {data}= response;
             console.log(data);
             navigate("/");
-        })
+        });
+        promise.catch(err => 
+            alert(`Digite corretamente suas Credenciais`)    
+        );
     }
 
     return(

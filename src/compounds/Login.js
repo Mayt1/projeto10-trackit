@@ -1,21 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 
 import logo from './../assets/images/logo.svg';
 
-export default function Login(){
+import App from "./App";
+
+//export default function Login({saveToken},{saveUserImg}){
+export default function Login({saveToken,saveUserImg}){
+    
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    function loginAutentication(){
+        const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
+        const promise = axios.post(URL, {
+            email:email,
+            password: password,        
+        });
+        promise.then(response =>{
+            const {data}= response;
+            console.log(data);
+            saveToken(data.token);
+            saveUserImg(data.image);
+            navigate("/hoje");
+        });
+        promise.catch(err => 
+            alert(`Digite corretamente suas Credenciais`)    
+        );
+    }
 
     return(
         <Container>
             <Logo src={logo} alt="logo-trackit"></Logo>
             <Input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}></Input>
             <Input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)}></Input>
-            <Button>Entrar</Button>
-            <Link to="cadastro/"> <LinkToNewUser>Não tem uma conta? Cadastre-se!</LinkToNewUser> </Link>
+            <Button onClick={loginAutentication}>Entrar</Button>
+            <Link to="/cadastro"> <LinkToNewUser>Não tem uma conta? Cadastre-se!</LinkToNewUser> </Link>
         </Container>
     );
 }
@@ -46,7 +70,7 @@ const Input = styled.input`
     font-weight: 400;
     font-size: 19.976px;
     line-height: 25px;
-    color: #DBDBDB;
+    color: black;
     padding-left:11px;
 `;
 

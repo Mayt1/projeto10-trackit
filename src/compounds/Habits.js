@@ -7,7 +7,7 @@ import miniLogo from './../assets/images/TrackIt.svg';
 
 import { StyleSheetConsumer } from "styled-components";
 
-export default function Today({ token, image }) {
+export default function Habits({ token, image }) {
 
     return (
         <>
@@ -16,7 +16,7 @@ export default function Today({ token, image }) {
                 <UserLogo src={image} alt="logo-user"></UserLogo>
             </Head>
             <Container>
-                <p>testezinho do today</p>
+                <p>testezinho do habits</p>
             </Container>
             <Foot>
                     <BottomFoot><Link to="/habitos"> <p>Hábitos</p> </Link> </BottomFoot>

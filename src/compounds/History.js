@@ -7,7 +7,7 @@ import miniLogo from './../assets/images/TrackIt.svg';
 
 import { StyleSheetConsumer } from "styled-components";
 
-export default function Today({ token, image }) {
+export default function History({ token, image }) {
 
     return (
         <>
@@ -16,7 +16,8 @@ export default function Today({ token, image }) {
                 <UserLogo src={image} alt="logo-user"></UserLogo>
             </Head>
             <Container>
-                <p>testezinho do today</p>
+                <h1>Histórico</h1>
+                <p>Em breve você poderá ver o histórico dos seus hábitos aqui!</p>
             </Container>
             <Foot>
                     <BottomFoot><Link to="/habitos"> <p>Hábitos</p> </Link> </BottomFoot>
@@ -31,9 +32,29 @@ export default function Today({ token, image }) {
 const Container = styled.div`
     display:flex;
     flex-direction:column;
-    align-items: center;
-    justify-content: center;
     margin-top:70px;
+
+    h1{    
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 22.976px;
+        line-height: 29px;
+        color: #126BA5;
+        margin-top:28px;
+        margin-left:18px;
+        margin-bottom10px;
+    }
+    p{
+        font-family: 'Lexend Deca';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 17.976px;
+        line-height: 22px;
+        color: #666666;
+        margin-left:15px;
+    }
+    
 `;
 
 const Head = styled.div`

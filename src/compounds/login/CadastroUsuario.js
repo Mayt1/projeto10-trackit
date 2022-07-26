@@ -3,24 +3,30 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 
-import logo from './../assets/images/logo.svg';
+import logo from './../../assets/images/logo_ifb.png';
 import { StyleSheetConsumer } from "styled-components";
 
 export default function CreateUser(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState("");
-    const [image, setImage] = useState("");
+    const [userPhoto, setUserPhoto] = useState("");
+    const [cpf, setCpf] = useState("");
+    // const [isTeacher, setIsTeacher] = useState(false);
 
     const navigate = useNavigate();
 
     function createNewAccount(){
-        const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
+        const URL = "http://localhost:5000/signup";//a rota de cadastro
         const promise = axios.post(URL, {
             email:email,
             name:name,
-            image: image,
-            password: password,        
+            cpf:cpf,
+            userPhoto: userPhoto,
+            password: password,
+            confirmPassword:confirmPassword,
+            // isTeacher:isTeacher        
         });
         promise.then(response =>{
             const {data}= response;
@@ -28,17 +34,24 @@ export default function CreateUser(){
             navigate("/");
         });
         promise.catch(err => 
-            alert(`Digite corretamente suas Credenciais`)    
+            alert(`Digite Todos os campos`)    
         );
     }
     //TODO: adicionar nos inputs  disabled="disabled" ou disabled="" com "disabled" sendo um estado q vai mudando de acordo com o login
     return(
         <Container>
             <Logo src={logo} alt="logo-trackit"></Logo>
-            <Input type="text" placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)}></Input>
-            <Input type="password" placeholder="senha" value={password} onChange={(e) => setPassword(e.target.value)}></Input>
-            <Input type="text" placeholder="nome" value={name} onChange={(e) => setName(e.target.value)}></Input>
-            <Input type="url" placeholder="foto" value={image} onChange={(e) => setImage(e.target.value)}></Input>
+            <h1>InovaIF</h1>
+            <Input type="text" placeholder="Digite seu cpf" value={cpf} onChange={(e) => setCpf(e.target.value)}></Input>
+            <Input type="text" placeholder="Digite seu email" value={email} onChange={(e) => setEmail(e.target.value)}></Input>
+            <Input type="password" placeholder="Digite uma senha" value={password} onChange={(e) => setPassword(e.target.value)}></Input>
+            <Input type="password" placeholder="Confirme sua senha" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></Input>
+            <Input type="text" placeholder="Digite seu nome" value={name} onChange={(e) => setName(e.target.value)}></Input>
+            <Input type="url" placeholder="Adicione um URL da sua foto" value={userPhoto} onChange={(e) => setUserPhoto(e.target.value)}></Input>
+            {/* <label>
+                <p>"Voce é profesor?"</p>
+            </label>
+            <Input type="checkbox" value={isTeacher} checked={isTeacher} onChange={() => setIsTeacher(!isTeacher)}></Input> */}
             <Button onClick={createNewAccount}>Cadastrar</Button>
             <Link to="/"> <LinkToNewUser>Já tem uma conta? Faça login!</LinkToNewUser> </Link>
         </Container>
@@ -50,12 +63,23 @@ const Container = styled.div`
     flex-direction:column;
     align-items: center;
     justify-content: center;
+
+    h1{
+        color:var( --corLogo);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 67px;
+        font-family: 'Architects Daughter', cursive;
+        margin-top:42px;
+        margin-bottom:42px;
+    }
 `;
 
 const Logo = styled.img`
-    width:180px;
-    height:180px;
-    margin-top:68px;
+    width: 303px;
+    height:94px;
+    margin-top:36px;
     margin-bottom:35px;
 `;
 
@@ -78,7 +102,7 @@ const Input = styled.input`
 const Button = styled.button`
     width: 303px;
     height: 45px;
-    background: #52B6FF;
+    background: var(--corprincipal);
     border-radius: 4.63636px;
     border:#52B6FF;
     align-items: center;
@@ -102,4 +126,5 @@ const LinkToNewUser = styled.p`
     text-align: center;
     text-decoration-line: underline;
     color: #52B6FF;
+    margin-bottom:40px;
 `

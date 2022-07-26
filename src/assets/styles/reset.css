@@ -46,8 +46,8 @@ strong {
 }
 a{
 	text-decoration: none;
-	color: #52B6FF;
+	color: var(--corprincipal);
 }
 a:visited{
-	color: #52B6FF;
+	color: var(--corprincipal);
 }

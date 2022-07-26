@@ -8,4 +8,14 @@ body {
   color: #262626;
   font-weight: 400;
   font-size: 14px;
+
+  --corprincipal: #33AF31;
+  --corCards: #6EBA63;
+  --corLogo:#309600;
+  --corCardButton:#7089DF;
+  --corSelecionadoBarra:#00420C;
+  --corDeselecionadoBarra:#A8A4A4;
+
 }
+
+/**background-color: var(--cor-bg-principal);*/
